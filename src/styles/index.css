@@ -1,1 +1,94 @@
+.content-home {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+  background-image: linear-gradient(to bottom right, pink, yellow);
+  width: 100%;
+}
 
+.title {
+  display: flex;
+  margin: 50px;
+  justify-content: center;
+  font-size: 60px;
+  color: rgba(17, 16, 16, 0.918);
+}
+
+.content-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70%;
+  border: solid 5px;
+  border-radius: 5px;
+}
+
+.input-task {
+  text-align: center;
+}
+
+.input-task:focus {
+  border-color: rgba(252, 252, 252, 0.993);
+}
+
+.list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 20px;
+  align-items: center;
+  padding-inline-start: 0px;
+  border: solid 5px;
+  border-radius: 5px;
+}
+
+.li-done,
+.li-undone {
+  padding: 5px;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.li-done {
+  background-color: lightgreen;
+}
+
+.li-undone {
+  background-color: pink;
+}
+
+.btn {
+  background-color: pink;
+  color: rgba(0, 0, 0, 0.733);
+}
+
+.btn:hover {
+  background-color: pink;
+}
+
+.fa-solid,
+.fa-regular {
+  width: 5%;
+  float: right;
+  margin-top: 3px;
+}
+
+.fa-circle-check:hover {
+  color: rgb(65, 240, 65);
+}
+
+.fa-trash-can:hover {
+  color: rgb(255, 0, 0);
+}
+
+.loading {
+  color: white;
+}
+
+.fa-solid-fa-spinner {
+  color: white;
+}
