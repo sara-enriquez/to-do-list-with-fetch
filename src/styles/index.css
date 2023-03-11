@@ -27,10 +27,21 @@
 
 .input-task {
   text-align: center;
+  border-radius: 0px;
 }
 
 .input-task:focus {
   border-color: rgba(252, 252, 252, 0.993);
+}
+
+.btn {
+  background-color: pink;
+  color: rgba(0, 0, 0, 0.733);
+  border-radius: 0px;
+}
+
+.btn:hover {
+  background-color: pink;
 }
 
 .list {
@@ -61,15 +72,6 @@
   background-color: pink;
 }
 
-.btn {
-  background-color: pink;
-  color: rgba(0, 0, 0, 0.733);
-}
-
-.btn:hover {
-  background-color: pink;
-}
-
 .fa-solid,
 .fa-regular {
   width: 5%;
@@ -78,7 +80,7 @@
 }
 
 .fa-circle-check:hover {
-  color: rgb(65, 240, 65);
+  color: rgb(57, 214, 57);
 }
 
 .fa-trash-can:hover {
@@ -87,8 +89,12 @@
 
 .loading {
   color: white;
+  font-size: 20px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  background-color: black;
+  align-items: center;
 }
 
-.fa-solid-fa-spinner {
-  color: white;
-}
+

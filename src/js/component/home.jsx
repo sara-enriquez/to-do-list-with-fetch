@@ -12,7 +12,6 @@ const Home = () => {
       const response = await fetch(URL, { method: "GET" });
       const data = await response.json();
       setTaskList(data);
-      console.log("este es el getData ", data);
       setLoad(true);
     } catch (err) {
       console.log("err");
@@ -21,21 +20,20 @@ const Home = () => {
 
   useEffect(() => {
     getData();
-    console.log("este es el useEffect del principio", getData());
   }, []);
 
   const addNewTask = async () => {
     try {
       const data = [...taskList, { label: newTask, done: false }];
-      const response = await fetch(URL, {
+      setLoad(false);
+      await fetch(URL, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       });
-      console.log("este es el response de addNewTask ", response);
-      console.log("este es el data de addNewTask ", data);
+      setLoad(true);
       getData();
-      input.value = "";
+      inputTask.value = "";
     } catch (err) {
       console.log("err");
     }
@@ -48,45 +46,45 @@ const Home = () => {
   const deleteTask = async (i) => {
     let newTaskList = [...taskList];
     newTaskList.splice(i, 1);
-    console.log("este es el newTaskList de deleteTask ", newTaskList);
-    const response = await fetch(URL, {
+    setLoad(false);
+    await fetch(URL, {
       method: "PUT",
       body: JSON.stringify(newTaskList),
       headers: { "Content-Type": "application/json" },
     });
+    setLoad(true);
     getData();
-    console.log("esta es la response de deleteTask ", response);
   };
 
   const doneTask = async (i) => {
     let newTaskList = [...taskList];
     newTaskList[i].done = !newTaskList[i].done;
-    console.log("este es el newTaskList de doneTask ", newTaskList);
-    const response = await fetch(URL, {
+    setLoad(false);
+    await fetch(URL, {
       method: "PUT",
       body: JSON.stringify(newTaskList),
       headers: { "Content-Type": "application/json" },
     });
+    setLoad(true);
     getData();
-    console.log("esta es la response de doneTask ", response);
   };
 
   return (
     <div className="content-home container-fluid">
-      <h1 className="title col-sm-md-lg">Lista de Tareas Pendientes :</h1>
-      <div className="content-form input-group col-sm-md-lg">
+      <h1 className="title">Mis tareas pendientes</h1>
+      <div className="content-form input-group">
         <input
           onChange={inputValue}
           type="text"
           placeholder="Escribir nueva tarea"
-          id="input"
-          className="input-task form-control col-sm-md-lg"
+          id="inputTask"
+          className="input-task form-control"
         ></input>
-        <button className="btn btn-outline-secondary col-sm-md-lg" onClick={addNewTask}>
+        <button className="btn btn-outline" onClick={addNewTask}>
           Añadir
         </button>
       </div>
-      <ul className="list col-sm-md-lg">
+      <ul className="list">
         {load ? (
           taskList.map((task, i) => {
             return (
@@ -108,9 +106,15 @@ const Home = () => {
             );
           })
         ) : (
-          <h1 className="loading">
-            Loading <i class="fa-solid fa-spinner"></i>
-          </h1>
+          <li className="loading">
+            Cargando...{" "}
+            <div
+              class="spinner-border spinner-border-sm text-warning"
+              role="status"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </li>
         )}
       </ul>
     </div>
