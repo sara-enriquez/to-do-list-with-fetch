@@ -56,6 +56,16 @@
   border-radius: 5px;
 }
 
+.list-with-no-task {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 20px;
+  align-items: center;
+  padding-inline-start: 0px;
+}
+
 .li-done,
 .li-undone {
   padding: 5px;
@@ -96,5 +106,3 @@
   background-color: black;
   align-items: center;
 }
-
-

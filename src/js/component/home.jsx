@@ -52,6 +52,7 @@ const Home = () => {
       body: JSON.stringify(newTaskList),
       headers: { "Content-Type": "application/json" },
     });
+    setTaskList(newTaskList);
     setLoad(true);
     getData();
   };
@@ -84,10 +85,10 @@ const Home = () => {
           Añadir
         </button>
       </div>
-      <ul className="list">
+      <ul className={taskList.length >= 2 ? "list" : "list-with-no-task"}>
         {load ? (
           taskList.map((task, i) => {
-            return (
+            return i == 0 ? null : (
               <li className={task.done ? "li-done" : "li-undone"}>
                 {task.label}
                 <i
@@ -107,7 +108,7 @@ const Home = () => {
           })
         ) : (
           <li className="loading">
-            Cargando...{" "}
+            Cargando...
             <div
               class="spinner-border spinner-border-sm text-warning"
               role="status"
